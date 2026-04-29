@@ -1,0 +1,207 @@
+/* Общие настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка (статичная крыша) */
+.site-header {
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.logo img {
+    height: 40px;
+}
+
+/* Навигационное меню */
+.main-nav {
+    flex-grow: 1;
+    margin: 0 40px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4a4a4a;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #1e87f0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1e87f0;
+    transition: width 0.2s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Действия в шапке (профиль, кнопки) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-greeting {
+    font-weight: 500;
+    color: #4a4a4a;
+}
+
+/* Кнопки */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #38405e;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #38405e;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #132e91;
+    border: 1px solid #0d257d;
+}
+
+.btn-secondary:hover {
+    background: #f0f7ff;
+}
+
+/* Основное содержимое страницы */
+.site-main {
+    min-height: calc(100vh - 140px);
+    padding: 40px 0;
+}
+
+/* Хлебные крошки */
+.breadcrumb {
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #38405e;
+    text-decoration: none;
+}
+
+.breadcrumb span {
+    color: #999;
+}
+
+/* Подвал */
+.site-footer {
+    background: #2a2a2a;
+    color: #fff;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-nav a {
+    color: #bbb;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-nav a:hover {
+    color: #fff;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .main-nav {
+        margin: 16px 0 0;
+        order: 3;
+        width: 100%;
+    }
+
+    .nav-list {
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .header-actions {
+        order: 2;
+        margin-top: 16px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

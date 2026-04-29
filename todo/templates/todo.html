@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+
+{%block title%}TODO_list{%endblock%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/todo.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="todo-container">
+        
+    <h2>Todo App</h2>
+
+<div class="button-container">
+        <!-- Complited -->
+         <form method="POST">
+                {% csrf_token %}
+                
+                <button type="submit"
+                        name="complited_task"
+                        class="btn btn-delete">
+                     COMPLITED
+                </button>
+            </form>
+            <!--  NOT Complited -->
+              <form method="POST">
+                {% csrf_token %}
+                
+                <button type="submit"
+                        name="uncomplited_task"
+                        class="btn btn-delete">
+                    NOT COMPLITED
+                </button>
+            </form>
+
+            <!--  ALL_Task -->
+              <form method="POST">
+                {% csrf_token %}
+                
+                <button type="submit"
+                        name="all_task"
+                        class="btn btn-delete">
+                   ALL _ TASK
+                </button>
+            </form>
+    <!-- ADD TASK -->
+
+</div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="title" placeholder="Add your new todo" required>
+            <button type="submit" name="add_task" class="add-btn">+</button>
+        </div>
+    </form>
+
+    <!-- TASK LIST -->
+    {% for todo in todos %}
+    <div class="task">
+
+        <!-- NORMAL TEXT -->
+        <div id="text-{{ todo.id }}" class="task-text">
+            {{ todo.title }}
+        </div>
+
+        <!-- EDIT MODE -->
+        <form method="POST"
+              id="edit-{{ todo.id }}"
+              class="edit-form"
+              style="display:none;">
+            {% csrf_token %}
+            <input type="hidden" name="task_id" value="{{ todo.id }}">
+            <input type="text"
+                   name="new_title"
+                   value="{{ todo.title }}"
+                   class="edit-input"
+                   required>
+            <button type="submit"
+                    name="edit_task"
+                    class="btn btn-delete">
+                ✔
+            </button>
+        </form>
+
+        <!-- BUTTONS -->
+        <div class="btn-group">
+            <button type="button"
+                    onclick="enableEdit({{ todo.id }})"
+                    class="btn btn-delete">
+                ✏
+            </button>
+
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="task_id" value="{{ todo.id }}">
+                <button type="submit"
+                        name="done_task"
+                        class="btn btn-delete">
+                     ✔
+                </button>
+            </form>
+                <!-- DONE             -->
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="task_id" value="{{ todo.id }}">
+                <button type="submit"
+                        name="delete_task"
+                        class="btn btn-delete">
+                    🗑
+                </button>
+            </form>
+        </div>
+
+    </div>
+    {% empty %}
+        <p>No tasks yet</p>
+    {% endfor %}
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <span>You have {{ task_count }} tasks</span>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit"
+                    name="clear_all"
+                    class="clear-btn">
+                Clear All
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+function enableEdit(id) {
+    document.getElementById("text-" + id).style.display = "none";
+    document.getElementById("edit-" + id).style.display = "flex";
+}
+</script>
+
+
+    
+    
+{% endblock %}

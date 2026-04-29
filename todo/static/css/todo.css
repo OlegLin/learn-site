@@ -1,0 +1,182 @@
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Равномерное распределение с отступами */
+  gap: 15px; /* Отступы между кнопками */
+  height: 70px;
+  
+}
+.todo-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 3%;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px 0 0 12px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #020d34;
+}
+
+.add-btn {
+    background: #020d34;
+    color: white;
+    border: none;
+    padding: 0 24px;
+    border-radius: 0 12px 12px 0;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #020d34;
+}
+
+.task {
+    background: #f4f4f4;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    transition: background 0.2s ease;
+}
+
+.task:hover {
+    background: #ededed;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 16px;
+}
+
+.edit-input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.btn-edit {
+    background: #f39c12;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #d68910;
+}
+
+.btn-save {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-save:hover {
+    background: #27ae60;
+}
+
+.btn-delete {
+ /* Базовый стиль glassmorphism */
+  background: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый фон */
+  backdrop-filter: blur(10px); /* Размытие фона за кнопкой */
+  -webkit-backdrop-filter: blur(10px); /* Поддержка Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Светлая рамка */
+
+  /* Оформление текста */
+  color: #3f2f7a; /* Красный цвет текста для акцента «удалить» */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* Размеры и отступы */
+  padding: 12px 24px;
+  border-radius: 20px; /* Закруглённые углы */
+  cursor: pointer;
+
+  /* Тень для объёма */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  /* Плавный переход для эффектов */
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+      background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px); /* Лёгкое поднятие кнопки */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-delete:active {
+  transform: translateY(0); /* Возврат в исходное положение */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+.clear-btn {
+    background: #020d34;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.clear-btn:hover {
+    background: #020d34;
+}
+
+p {
+    text-align: center;
+    color: #777;
+}

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Образовательная платформа{% endblock %}</title>
+
+    <!-- Стили: общие и для шапки -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- СТАТИЧНАЯ КРЫША (НАВИГАЦИЯ) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Логотип -->
+                <a href="{% url 'home' %}" class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="Логотип платформы" height="40">
+                </a>
+
+                <!-- Основное меню (ссылки как на education.yandex.ru) -->
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="{% url 'home' %}" class="nav-link">ЕГЭ</a></li>
+                        <li><a href="{% url 'home' %}" class="nav-link">ОГЭ</a></li>
+                        <li><a href="{% url 'home' %}" class="nav-link">Курсы</a></li>
+                        <li><a href="{% url 'todo' %}" class="nav-link">ToDo list</a></li>
+                        <li><a href="{% url 'todo' %}" class="nav-link">ToDo list</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Правая часть: профиль и действия -->
+                <div class="header-actions">
+                    {% if user.is_authenticated %}
+                        <span class="user-greeting">Привет, {{ user.get_full_name|default:user.username }}!</span>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Выйти</a>
+                    {% else %}
+                        <a href="{% url 'home' %}" class="btn btn-primary">Войти</a>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Регистрация</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЕ СОДЕРЖИМОЕ СТРАНИЦЫ -->
+    <main class="site-main">
+        <div class="container">
+            {% block breadcrumbs %}{% endblock %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Образовательная платформа. Все права защищены.</p>
+                <nav class="footer-nav">
+                    <a href="#">О нас</a> |
+                    <a href="#">Контакты</a> |
+                    <a href="#">Политика конфиденциальности</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты: общие и специфические -->
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
