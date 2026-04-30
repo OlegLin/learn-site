@@ -38,8 +38,8 @@
                         <span class="user-greeting">Привет, {{ user.get_full_name|default:user.username }}!</span>
                         <a href="{% url 'home' %}" class="btn btn-secondary">Выйти</a>
                     {% else %}
-                        <a href="{% url 'home' %}" class="btn btn-primary">Войти</a>
-                        <a href="{% url 'home' %}" class="btn btn-secondary">Регистрация</a>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-primary">Черз гугл</a>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-secondary">IN with GOOGLE</a>
                     {% endif %}
                 </div>
             </div>

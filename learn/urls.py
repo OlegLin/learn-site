@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('', include('todo.urls')),
+    path('oath/', include('social_django.urls', namespace='social')),
 ]
