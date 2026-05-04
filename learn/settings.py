@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home',
     'todo',
     'social_django',
+    'users',
 ]
 
 MIDDLEWARE = [

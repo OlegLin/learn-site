@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('todo.urls')),
     path('oath/', include('social_django.urls', namespace='social')),
     path('', include('gfg_auth_app.urls')),
+    path('', include('users.urls')),
 ]
